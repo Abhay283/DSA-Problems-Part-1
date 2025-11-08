@@ -1,0 +1,44 @@
+#include <iostream>
+#include<vector>
+#include<algorithm>
+#include<queue>
+using namespace std;
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class solution
+{
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode *root)
+    {
+        vector<vector<int>> ans;
+        if (root == NULL)
+            return ans;
+        queue<TreeNode *> q;
+        q.push(root);
+        while (!q.empty())
+        {
+            int size = q.size();
+            vector<int> level;
+            for (int i = 0; i < size; i++)
+            {
+                TreeNode *node = q.front();
+                q.pop();
+                if (node->left != NULL)
+                    q.push(node->left);
+                if (node->right != NULL)
+                    q.push(node->right);
+                level.push_back(node->val);
+            }
+            ans.push_back(level);
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
