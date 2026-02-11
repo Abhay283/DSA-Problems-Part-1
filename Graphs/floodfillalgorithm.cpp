@@ -8,10 +8,10 @@ class solution{
         int n=image.size();
         int m=image[0].size();
         for(int i=0;i<4;i++){
-            int nrow=row+delrow[i];
+            int r=row+delrow[i];
             int ncol=col+delcol[i];
-            if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && image[nrow][ncol]=inicolor && ans[nrow][ncol]!=newcolor){
-                dfs(nrow,ncol,ans,image,newcolor,delrow,delcol,inicolor);
+            if(r>=0 && r<n && ncol>=0 && ncol<m && image[r][ncol]=inicolor && ans[r][ncol]!=newcolor){
+                dfs(r,ncol,ans,image,newcolor,delrow,delcol,inicolor);
             }
         }
 
